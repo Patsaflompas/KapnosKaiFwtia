@@ -1,0 +1,29 @@
+// C++ code
+//
+int redLed = 12;//dhlwsh metablhths thesehs tou kokkinou led sto digital 12
+int smokeA0 = A0;//dhlwsh theshs tou smoke detector sto analog 0
+int sensorThres = 100;//dhlwsh tou oriou gia endeiksh kindunou
+
+void setup()
+{
+  pinMode(redLed, OUTPUT);//eksodos shmatos sthn thesh 12
+  pinMode(smokeA0, INPUT);//eisodos dedomenwn apo to A0, dld to smoke detector
+  Serial.begin(9600);//dhlwsh tou bitrate se 9600 bit/sec metafora dedomenwn sto serial monitor
+}
+
+void loop()
+{
+  int analogSensor = analogRead(smokeA0);//to analogSensor pairnei tis times pou stelnei o smoke detector
+  Serial.print("Pin A0: ");
+  Serial.println(analogSensor);//tupwnoume tis times gia na kanoume debugging kai na kseroume poso akribws na baloume to orio
+  
+  if (analogSensor > sensorThres)//leitourgia ths if an kseperastei to orio
+  {
+    digitalWrite(redLed, HIGH);//anabei to lampaki
+  }
+  else
+  {
+    digitalWrite(redLed, LOW);//den anabei to labaki an den kseperastei to orio
+  }
+ 
+}
